@@ -66,4 +66,16 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.5.3")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+
+    // Koin
+    implementation("dev.burnoo:cokoin:0.3.2")
+    implementation("dev.burnoo:cokoin-android-viewmodel:0.3.2")
+    implementation("dev.burnoo:cokoin-android-navigation:0.3.2")
 }
