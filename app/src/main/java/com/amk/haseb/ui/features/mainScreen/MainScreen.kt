@@ -54,6 +54,7 @@ import com.amk.haseb.R
 import com.amk.haseb.ui.theme.HasebTheme
 import com.amk.haseb.ui.theme.Typography
 import com.amk.haseb.ui.theme.textFieldStyle
+import com.amk.haseb.util.calculateScore
 
 @Preview(showBackground = true)
 @Composable
@@ -88,9 +89,9 @@ fun MainScreen() {
         )
 
 
-        mainTextField("تعداد پاسخ صحیح")
-        mainTextField("تعداد پاسخ غلط")
-        mainTextField("تعداد سوالات نزده")
+        val trueValue = mainTextField("تعداد پاسخ صحیح")
+        val falseValue = mainTextField("تعداد پاسخ غلط")
+        val noneValue = mainTextField("تعداد سوالات نزده")
 
 
         Button(
@@ -99,7 +100,12 @@ fun MainScreen() {
                 .padding(top = 8.dp, bottom = 16.dp)
                 .height(56.dp),
             onClick = {
-
+                if (trueValue.isEmpty() || falseValue.isEmpty() || noneValue.isEmpty()) {
+                    Toast.makeText(context, "چیزی رو خالی نذار :)", Toast.LENGTH_SHORT).show()
+                } else {
+                    val percentage =
+                        calculateScore(trueValue.toInt(), falseValue.toInt(), noneValue.toInt())
+                }
             },
             shape = RoundedCornerShape(16.dp),
             colors = ButtonDefaults.buttonColors(Color(0xFF7E84F9))
