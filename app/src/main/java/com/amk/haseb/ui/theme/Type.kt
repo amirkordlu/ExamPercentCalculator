@@ -7,6 +7,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.sp
 import com.amk.haseb.R
 
@@ -42,5 +43,5 @@ val textFieldStyle = TextStyle(
     fontFamily = FontFamily(Font(R.font.dana_medium)),
     fontWeight = FontWeight(400),
     color = Color(0xFF424242),
-    textAlign = TextAlign.Right,
+    textAlign = TextAlign.Center
 )
