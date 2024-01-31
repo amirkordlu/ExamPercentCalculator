@@ -54,7 +54,9 @@ import com.amk.haseb.R
 import com.amk.haseb.ui.theme.HasebTheme
 import com.amk.haseb.ui.theme.Typography
 import com.amk.haseb.ui.theme.textFieldStyle
+import com.amk.haseb.util.MyScreens
 import com.amk.haseb.util.calculateScore
+import dev.burnoo.cokoin.navigation.getNavController
 
 @Preview(showBackground = true)
 @Composable
@@ -73,6 +75,7 @@ fun MainScreenPreview() {
 fun MainScreen() {
     var trueValue by remember { mutableStateOf(TextFieldValue("")) }
     val context = LocalContext.current
+    val navigation = getNavController()
 
     Column(
         modifier = Modifier
@@ -105,6 +108,8 @@ fun MainScreen() {
                 } else {
                     val percentage =
                         calculateScore(trueValue.toInt(), falseValue.toInt(), noneValue.toInt())
+                    navigation.navigate("${MyScreens.ResultScreen.route}/${percentage.first}/${percentage.second}")
+
                 }
             },
             shape = RoundedCornerShape(16.dp),

@@ -13,3 +13,6 @@ fun calculateScore(trueValue: Int, falseValue: Int, noneValue: Int): Pair<String
 
     return Pair(formattedPercentageWithFalse, formattedPercentageWithoutFalse)
 }
+
+const val KEY1_ARG = "Key1"
+const val KEY2_ARG = "Key2"
