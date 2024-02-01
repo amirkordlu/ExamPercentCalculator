@@ -13,7 +13,7 @@ import com.amk.haseb.R
 
 val Typography = Typography(
     bodyLarge = TextStyle(
-        fontSize = 28.sp,
+        fontSize = 38.sp,
         fontFamily = FontFamily(Font(R.font.dana_medium)),
         fontWeight = FontWeight(400),
         color = Color(0xFF424242),
