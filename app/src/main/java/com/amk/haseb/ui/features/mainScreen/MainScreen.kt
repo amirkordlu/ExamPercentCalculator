@@ -44,6 +44,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
@@ -94,7 +95,7 @@ fun MainScreen() {
 
         val trueValue = mainTextField("تعداد پاسخ صحیح")
         val falseValue = mainTextField("تعداد پاسخ غلط")
-        val noneValue = mainTextField("تعداد سوالات نزده")
+        val noneValue = lastTextField("تعداد سوالات نزده")
 
 
         Button(
@@ -131,22 +132,52 @@ fun MainScreen() {
 fun mainTextField(hint: String): String {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     OutlinedTextField(
-        modifier = Modifier.fillMaxWidth(0.75f), // اضافه کردن این مودیفایر
+        modifier = Modifier.fillMaxWidth(0.75f),
         value = text,
         onValueChange = { text = it },
         textStyle = textFieldStyle,
         placeholder = {
             Text(
                 text = hint,
-                modifier = Modifier.fillMaxWidth(), // اضافه کردن این مودیفایر
-                textAlign = TextAlign.Center, // وسط چین کردن متن
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center,
                 style = textFieldStyle
             )
         },
         shape = RoundedCornerShape(14.dp),
         singleLine = true,
         maxLines = 1,
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Decimal,
+            imeAction = ImeAction.Next
+        ),
+    )
+    return text.text
+}
+
+@Composable
+fun lastTextField(hint: String): String {
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+    OutlinedTextField(
+        modifier = Modifier.fillMaxWidth(0.75f),
+        value = text,
+        onValueChange = { text = it },
+        textStyle = textFieldStyle,
+        placeholder = {
+            Text(
+                text = hint,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center,
+                style = textFieldStyle
+            )
+        },
+        shape = RoundedCornerShape(14.dp),
+        singleLine = true,
+        maxLines = 1,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Decimal,
+            imeAction = ImeAction.Done
+        ),
     )
     return text.text
 }
